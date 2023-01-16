@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import * as StoreReview from "expo-store-review";
 import {
   Share,
@@ -6,6 +6,7 @@ import {
   View,
   StyleSheet,
   Image,
+  Switch,
   Linking,
   TouchableNativeFeedback,
 } from "react-native";
@@ -14,8 +15,8 @@ import {
   MaterialCommunityIcons,
   MaterialIcons,
 } from "@expo/vector-icons";
-
-
+import { ThemeContext } from "../context/ThemeContext";
+import theme from "../theme/theme";
 const RateUs = async () => {
   if (await StoreReview.isAvailableAsync()) {
     StoreReview.requestReview()
@@ -52,8 +53,16 @@ const ShareApp = async () => {
   }
 };
 const CustomDrawer = () => {
+  const { darkmode, setDarkMode } = useContext(ThemeContext);
   return (
-    <View style={{ flex: 1 }}>
+    <View
+      style={{
+        flex: 1,
+        backgroundColor: darkmode
+          ? theme.dark.background
+          : theme.light.background,
+      }}
+    >
       <View style={{ marginBottom: 20 }}>
         <View
           style={{
@@ -83,7 +92,16 @@ const CustomDrawer = () => {
           }
         >
           <MaterialIcons name="star-rate" size={28} color="#FF7D54" />
-          <Text style={styles.drawertext as any}>Rate Us</Text>
+          <Text
+            style={[
+              styles.drawertext,
+              {
+                color: darkmode ? theme.dark.textcolor : theme.light.textcolor,
+              },
+            ]}
+          >
+            Rate Us
+          </Text>
         </View>
       </TouchableNativeFeedback>
       <TouchableNativeFeedback
@@ -98,7 +116,16 @@ const CustomDrawer = () => {
           }
         >
           <MaterialIcons name="privacy-tip" size={28} color="#FF7D54" />
-          <Text style={styles.drawertext as any}>Privacy Policy</Text>
+          <Text
+            style={[
+              styles.drawertext,
+              {
+                color: darkmode ? theme.dark.textcolor : theme.light.textcolor,
+              },
+            ]}
+          >
+            Privacy Policy
+          </Text>
         </View>
       </TouchableNativeFeedback>
       <TouchableNativeFeedback
@@ -106,15 +133,44 @@ const CustomDrawer = () => {
       >
         <View style={styles.draweritem} onTouchStart={ShareApp}>
           <Entypo name="share" size={28} color="#FF7D54" />
-          <Text style={styles.drawertext as any}>Share with Friends</Text>
+          <Text
+            style={[
+              styles.drawertext,
+              {
+                color: darkmode ? theme.dark.textcolor : theme.light.textcolor,
+              },
+            ]}
+          >
+            Share with Friends
+          </Text>
         </View>
       </TouchableNativeFeedback>
+      <View style={styles.bottom}>
+        <View style={styles.draweritembottom}>
+          <Text
+            style={[
+              styles.drawertext,
+              {
+                color: darkmode ? theme.dark.textcolor : theme.light.textcolor,
+              },
+            ]}
+          >
+            Dark Mode
+          </Text>
+          <Switch
+            value={darkmode}
+            onValueChange={(value) => {
+              setDarkMode(value);
+            }}
+          />
+        </View>
+      </View>
     </View>
   );
 };
 
 export default CustomDrawer;
-const styles =StyleSheet.create({
+const styles = StyleSheet.create({
   draweritem: {
     flexDirection: "row",
     alignItems: "center",
@@ -124,8 +180,19 @@ const styles =StyleSheet.create({
   },
   drawertext: {
     fontSize: 20,
-    fontWeight: "400",
     paddingLeft: 20,
-    fontStyle: "bold",
+  },
+  bottom: {
+    position: "absolute",
+    bottom: 2,
+  },
+
+  draweritembottom: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    marginBottom: 15,
+    paddingLeft: 20,
+    height: 45,
   },
 });

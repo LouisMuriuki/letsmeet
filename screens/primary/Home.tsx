@@ -1,18 +1,25 @@
 import { StyleSheet, Text, View, FlatList } from "react-native";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import Button from "../../components/button/Button";
 import { AntDesign } from "@expo/vector-icons";
+import { ThemeContext } from "../../context/ThemeContext";
+import theme from "../../theme/theme";
+import Images from "../../components/Images";
 type Item = {
   title?: string;
   id?: number;
 };
-const Home = () => {
+const Home = ({navigation}) => {
+  const man1=require("../../assets/man1.jpg")
+  const man2=require("../../assets/man2.jpg")
+  const woman1=require("../../assets/woman1.jpg")
   let today = new Date();
   let day = today.getDay();
   let date = today.getDate();
   let hours = today.getHours();
   let month = today.getMonth();
-  const [greeting,setGreeting]=useState<string>()
+  const [greeting, setGreeting] = useState<string>("");
+  const { darkmode, setDarkMode } = useContext(ThemeContext);
   let daylist = [
     "Sunday",
     "Monday",
@@ -36,18 +43,19 @@ const Home = () => {
     "November",
     "December",
   ];
-  
 
-const red = 156;
-const green = 167;
-const blue = 189;
-const myColor =`rgba(${red}, ${green}, ${blue},0.5)`;
-  
+  const red = 156;
+  const green = 167;
+  const blue = 189;
+  const myColor = `rgba(${red}, ${green}, ${blue},0.5)`;
 
-  useEffect(()=>{
-    (hours < 12)? setGreeting("GoodMorning") :
-    ((hours <= 18 && hours >= 12 ) ?  setGreeting("GoodAfternoon") :  setGreeting("GoodEvening"));
-  },[])
+  useEffect(() => {
+    hours < 12
+      ? setGreeting("GoodMorning")
+      : hours <= 18 && hours >= 12
+      ? setGreeting("GoodAfternoon")
+      : setGreeting("GoodEvening");
+  }, []);
   const DATA = [
     {
       id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
@@ -72,10 +80,23 @@ const myColor =`rgba(${red}, ${green}, ${blue},0.5)`;
   ];
   const renderitem = ({ item }: Item) => {
     return (
-      <View style={styles.meetingcontainer}>
-        <Text style={styles.meetingcontainerheader}>{"Meeting"}</Text>
-        <Text style={styles.meetingcontainertitle}>{item.title}</Text>
-        <Text style={styles.meetingcontainertime}>{"09 AM - 11 AM"}</Text>
+      <View
+        style={[
+          styles.meetingcontainer,
+          {
+            backgroundColor: darkmode
+              ? theme.dark.secondarybg
+              : theme.light.secondarybg,
+          },
+        ]}
+      >
+        <Text style={[styles.meetingcontainerheader,{color: darkmode ? theme.dark.headercolor : theme.light.headercolor }]}>{"Meeting"}</Text>
+        <Text style={[styles.meetingcontainertitle,{color: darkmode
+            ? theme.dark.titlecolor
+            : theme.light.titlecolor}]}>{item.title}</Text>
+        <Text style={[styles.meetingcontainertime,{color: darkmode
+            ? theme.dark.timecolor
+            : theme.light.timecolor}]}>{"09 AM - 11 AM"}</Text>
         <View style={styles.meetingcontainerbottom}>
           <View style={styles.meetingcontainerleft}></View>
           <View style={styles.meetingcontainerright}>
@@ -92,15 +113,57 @@ const myColor =`rgba(${red}, ${green}, ${blue},0.5)`;
     );
   };
   return (
-    <View style={styles.container}>
+    <View
+      style={[
+        styles.container,
+        {
+          backgroundColor: darkmode
+            ? theme.dark.background
+            : theme.light.background,
+        },
+      ]}
+    >
       <View style={styles.greetingscontainer}>
-        <Text style={styles.greetingstext}>{greeting} Louis 👋</Text>
+        <Text
+          style={[
+            styles.greetingstext,
+            { color: darkmode ? theme.dark.textcolor : theme.light.textcolor },
+          ]}
+        >
+          {greeting}, Louis 👋
+        </Text>
       </View>
 
-      <View style={[styles.schedulebubblecontainer,{backgroundColor:myColor}]}>
+      <View
+        style={[styles.schedulebubblecontainer, { backgroundColor: myColor }]}
+      >
         <View style={styles.schedulebubble}>
-          <Text style={styles.bubbleheader}>New Invitation</Text>
-          <Text style={styles.bubbletext}>create invitation link</Text>
+          <Text
+            style={[
+              styles.bubbleheader,
+              {
+                color: darkmode ? theme.dark.textcolor : theme.light.textcolor,
+              },
+            ]}
+          >
+            New Invitation
+          </Text>
+          <View style={{position:"absolute",right:-70,top:20}} >
+          <Images height={35} width={35} image={woman1}/>
+          </View>
+          <Text
+            style={[
+              styles.bubbletext,
+              {
+                color: darkmode ? theme.dark.textcolor : theme.light.textcolor,
+              },
+            ]}
+          >
+            create invitation link
+          </Text>
+          <View style={{position:"absolute",right:-120,top:60}} >
+          <Images height={50} width={50} image={man2}/>
+          </View>
           <Button
             backgroundColor="#2568cc"
             text="Send Invitation"
@@ -108,25 +171,55 @@ const myColor =`rgba(${red}, ${green}, ${blue},0.5)`;
             height={50}
             justifyContent="center"
             alignItems="center"
-            color="#fff"
+            color={"#fff"}
             elevation={5}
             rippleColor="5d91c2"
             fontWeight="bold"
             marginTop={20}
             fontSize={17}
             icon="send-circle"
-            iconcolor="#fff"
+            iconcolor={"#fff"}
             iconsize={20}
             flexDirection="row"
-            onPress={() => console.log("Invite sent")}
+            onPress={() => navigation.navigate("newinvitation")}
           />
+          <View style={{position:"absolute",right:-75,top:130}} >
+          <Images height={60} width={60} image={man1}/>
+          </View>
         </View>
       </View>
       <View style={styles.meetingscontainermain}>
         <View style={styles.meetingscontainerheader}>
-          <Text style={styles.headerday}>{daylist[day]}</Text>
-          <Text style={styles.headerdate}>{date}</Text>
-          <Text style={styles.headermonth}>{monthNames[month]}</Text>
+          <Text
+            style={[
+              styles.headerday,
+              {
+                color: darkmode ? theme.dark.textcolor : theme.light.textcolor,
+              },
+            ]}
+          >
+            {daylist[day]}
+          </Text>
+          <Text
+            style={[
+              styles.headerdate,
+              {
+                color: darkmode ? theme.dark.textcolor : theme.light.textcolor,
+              },
+            ]}
+          >
+            {date}
+          </Text>
+          <Text
+            style={[
+              styles.headermonth,
+              {
+                color: darkmode ? theme.dark.textcolor : theme.light.textcolor,
+              },
+            ]}
+          >
+            {monthNames[month]}
+          </Text>
         </View>
         <View style={styles.meetingscontainerbody}>
           <FlatList
@@ -148,10 +241,9 @@ export default Home;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#09090c",
   },
   greetingscontainer: {
-    marginTop:0,
+    marginTop: 0,
     marginHorizontal: 20,
     marginBottom: 10,
   },
@@ -159,9 +251,9 @@ const styles = StyleSheet.create({
     paddingLeft: 5,
     paddingBottom: 5,
     fontSize: 22,
-    color: "#fff",
   },
   schedulebubblecontainer: {
+    overflow:"hidden",
     height: 180,
     borderRadius: 15,
     marginHorizontal: 20,
@@ -172,13 +264,11 @@ const styles = StyleSheet.create({
   },
   bubbleheader: {
     fontSize: 24,
-    color: "#fff",
     fontWeight: "bold",
   },
   bubbletext: {
     fontSize: 16,
     marginTop: 5,
-    color: "#fff",
   },
   meetingscontainermain: {
     marginTop: 20,
@@ -188,27 +278,23 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     marginHorizontal: 20,
-    paddingBottom:10
+    paddingBottom: 10,
   },
   headerday: {
-    color: "#fff",
     fontWeight: "bold",
     fontSize: 20,
     marginRight: 5,
   },
   headerdate: {
-    color: "#fff",
     fontSize: 20,
     marginRight: 5,
   },
   headermonth: {
-    color: "#ffffff",
     fontSize: 20,
   },
   meetingscontainerbody: {},
   meetingcontainer: {
     borderRadius: 15,
-    backgroundColor: "#fff",
     padding: 10,
     marginVertical: 10,
     marginHorizontal: 20,
@@ -217,18 +303,19 @@ const styles = StyleSheet.create({
     marginTop: 5,
     marginLeft: 10,
     marginBottom: 5,
-    fontSize: 16,
+    fontSize: 17,
+    fontWeight: "bold",
   },
   meetingcontainertitle: {
     fontSize: 20,
     marginLeft: 10,
     marginBottom: 5,
-    fontWeight: "bold",
-    color: "#09090c",
+    
   },
   meetingcontainertime: {
     marginLeft: 10,
     marginBottom: 5,
+    fontSize:12
   },
 
   meetingcontainerbottom: {

@@ -1,24 +1,21 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import 'react-native-gesture-handler';
-import AppStack from './navigation/AppStack';
-import { NavigationContainer } from '@react-navigation/native';
+import { StyleSheet } from "react-native";
+import "react-native-gesture-handler";
+import React from "react";
+import { ThemeContextProvider } from "./context/ThemeContext";
+import Main from "./Main";
 export default function App() {
   return (
-    <NavigationContainer>
-       <StatusBar style="light"  />
-      <AppStack/>
-    </NavigationContainer>
-     
-    
+    <ThemeContextProvider>
+      <Main />
+    </ThemeContextProvider>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
   },
 });

@@ -1,19 +1,33 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import React from "react";
+import React, { useContext } from "react";
 import { Ionicons } from "@expo/vector-icons";
 import PrimaryStackNavigator from "./PrimaryHomeStackNavigator";
-import Meetings from "../../screens/primary/Meetings";
 import { MaterialIcons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 import PrimaryTopTabNavigator from "./PrimaryTopTabNavigator";
+import { ThemeContext } from "../../context/ThemeContext";
+import theme from "../../theme/theme";
 const Tab = createBottomTabNavigator();
+
 const PrimaryBottomTabNavigator = () => {
+  const { darkmode, setDarkMode } = useContext(ThemeContext);
   return (
     <Tab.Navigator
       screenOptions={{
-        headerShown: false,
+        headerShown: true,
         headerStyle: {
-          backgroundColor: "#000000",
+          backgroundColor: darkmode
+            ? theme.dark.background
+            : theme.light.background,
+        },
+        headerTintColor: darkmode
+        ? theme.dark.textcolor
+        : theme.light.textcolor,
+        headerShadowVisible: false,
+        tabBarStyle: {
+          backgroundColor: darkmode
+            ? theme.dark.background
+            : theme.light.background,
         },
       }}
     >
@@ -21,6 +35,7 @@ const PrimaryBottomTabNavigator = () => {
         name="primarystacknavigator"
         component={PrimaryStackNavigator}
         options={{
+          headerShown: false,
           tabBarLabel: "Home",
           tabBarActiveTintColor: "#FF7D54",
           tabBarIcon: ({ focused }) => (
