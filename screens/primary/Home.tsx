@@ -5,14 +5,16 @@ import { AntDesign } from "@expo/vector-icons";
 import { ThemeContext } from "../../context/ThemeContext";
 import theme from "../../theme/theme";
 import Images from "../../components/Images";
+import { PopupContext } from "../../context/PopupContext";
+import CustomAlert from "../../components/CustomAlert";
 type Item = {
   title?: string;
-  id?: number;
+  id?: string;
 };
-const Home = ({navigation}) => {
-  const man1=require("../../assets/man1.jpg")
-  const man2=require("../../assets/man2.jpg")
-  const woman1=require("../../assets/woman1.jpg")
+const Home = ({ navigation }) => {
+  const man1 = require("../../assets/man1.jpg");
+  const man2 = require("../../assets/man2.jpg");
+  const woman1 = require("../../assets/woman1.jpg");
   let today = new Date();
   let day = today.getDay();
   let date = today.getDate();
@@ -20,6 +22,8 @@ const Home = ({navigation}) => {
   let month = today.getMonth();
   const [greeting, setGreeting] = useState<string>("");
   const { darkmode, setDarkMode } = useContext(ThemeContext);
+  const { customealertvisible, setCustomAlertVisible } =
+    useContext(PopupContext);
   let daylist = [
     "Sunday",
     "Monday",
@@ -78,7 +82,7 @@ const Home = ({navigation}) => {
       title: "Third Item",
     },
   ];
-  const renderitem = ({ item }: Item) => {
+  const renderitem = ({ item }: { item: Item }) => {
     return (
       <View
         style={[
@@ -90,13 +94,36 @@ const Home = ({navigation}) => {
           },
         ]}
       >
-        <Text style={[styles.meetingcontainerheader,{color: darkmode ? theme.dark.headercolor : theme.light.headercolor }]}>{"Meeting"}</Text>
-        <Text style={[styles.meetingcontainertitle,{color: darkmode
-            ? theme.dark.titlecolor
-            : theme.light.titlecolor}]}>{item.title}</Text>
-        <Text style={[styles.meetingcontainertime,{color: darkmode
-            ? theme.dark.timecolor
-            : theme.light.timecolor}]}>{"09 AM - 11 AM"}</Text>
+        <Text
+          style={[
+            styles.meetingcontainerheader,
+            {
+              color: darkmode
+                ? theme.dark.headercolor
+                : theme.light.headercolor,
+            },
+          ]}
+        >
+          {"Meeting"}
+        </Text>
+        <Text
+          style={[
+            styles.meetingcontainertitle,
+            {
+              color: darkmode ? theme.dark.titlecolor : theme.light.titlecolor,
+            },
+          ]}
+        >
+          {item.title}
+        </Text>
+        <Text
+          style={[
+            styles.meetingcontainertime,
+            { color: darkmode ? theme.dark.timecolor : theme.light.timecolor },
+          ]}
+        >
+          {"09 AM - 11 AM"}
+        </Text>
         <View style={styles.meetingcontainerbottom}>
           <View style={styles.meetingcontainerleft}></View>
           <View style={styles.meetingcontainerright}>
@@ -106,7 +133,12 @@ const Home = ({navigation}) => {
               style={{ marginRight: 20, padding: 10 }}
               color="black"
             />
-            <AntDesign name="delete" size={20} color="red" />
+            <AntDesign
+              name="delete"
+              size={20}
+              onPress={() => setCustomAlertVisible(true)}
+              color="red"
+            />
           </View>
         </View>
       </View>
@@ -148,8 +180,8 @@ const Home = ({navigation}) => {
           >
             New Invitation
           </Text>
-          <View style={{position:"absolute",right:-70,top:20}} >
-          <Images height={35} width={35} image={woman1}/>
+          <View style={{ position: "absolute", right: -70, top: 20 }}>
+            <Images height={35} width={35} image={woman1} />
           </View>
           <Text
             style={[
@@ -161,8 +193,8 @@ const Home = ({navigation}) => {
           >
             create invitation link
           </Text>
-          <View style={{position:"absolute",right:-120,top:60}} >
-          <Images height={50} width={50} image={man2}/>
+          <View style={{ position: "absolute", right: -120, top: 60 }}>
+            <Images height={50} width={50} image={man2} />
           </View>
           <Button
             backgroundColor="#2568cc"
@@ -181,10 +213,10 @@ const Home = ({navigation}) => {
             iconcolor={"#fff"}
             iconsize={20}
             flexDirection="row"
-            onPress={() => navigation.navigate("newinvitation")}
+            onPress={() => navigation.navigate("newInvitation")}
           />
-          <View style={{position:"absolute",right:-75,top:130}} >
-          <Images height={60} width={60} image={man1}/>
+          <View style={{ position: "absolute", right: -75, top: 130 }}>
+            <Images height={60} width={60} image={man1} />
           </View>
         </View>
       </View>
@@ -232,6 +264,11 @@ const Home = ({navigation}) => {
           />
         </View>
       </View>
+      <CustomAlert
+        message="Are you sure you want to continue?"
+        onContinue={() => console.log("Continue clicked")}
+        onCancel={() => setCustomAlertVisible(false)}
+      />
     </View>
   );
 };
@@ -253,7 +290,7 @@ const styles = StyleSheet.create({
     fontSize: 22,
   },
   schedulebubblecontainer: {
-    overflow:"hidden",
+    overflow: "hidden",
     height: 180,
     borderRadius: 15,
     marginHorizontal: 20,
@@ -310,12 +347,11 @@ const styles = StyleSheet.create({
     fontSize: 20,
     marginLeft: 10,
     marginBottom: 5,
-    
   },
   meetingcontainertime: {
     marginLeft: 10,
     marginBottom: 5,
-    fontSize:12
+    fontSize: 12,
   },
 
   meetingcontainerbottom: {

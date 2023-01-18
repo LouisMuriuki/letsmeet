@@ -3,10 +3,14 @@ import "react-native-gesture-handler";
 import React from "react";
 import { ThemeContextProvider } from "./context/ThemeContext";
 import Main from "./Main";
+import { PopupContextProvider } from "./context/PopupContext";
+
 export default function App() {
   return (
     <ThemeContextProvider>
-      <Main />
+      <PopupContextProvider>
+        <Main />
+      </PopupContextProvider>
     </ThemeContextProvider>
   );
 }

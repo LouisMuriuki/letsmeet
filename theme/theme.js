@@ -9,6 +9,8 @@ const theme={
         foreground:"#09090c",
         background:"#fff",
         secondarybg:"#d0e0fd",
+        inputbg:"#28282B",
+        placeholderTextColor:"#555",
     },
     dark:{
         theme:"dark",
@@ -20,6 +22,8 @@ const theme={
         iconcolor:"#fff",
         background:"#09090c",
         secondarybg:"#d0e0fd",
+        inputbg:"#28282B",
+        placeholderTextColor:"#f5f5f5",
     }
 }
 export default theme

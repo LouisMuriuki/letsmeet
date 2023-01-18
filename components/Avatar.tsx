@@ -8,7 +8,7 @@ const Avatar = () => {
   const lui=require("../assets/lui.jpg")
   return (
     <View style={{ marginRight: 15 }}>
-      <Images height={25} width={25} image={lui}/>
+      <Images height={30} width={30} image={lui}/>
       {/* <View
         style={[
           styles.avatarcontainer,

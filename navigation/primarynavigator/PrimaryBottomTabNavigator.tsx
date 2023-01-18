@@ -1,18 +1,18 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import React, { useContext } from "react";
-import { Ionicons } from "@expo/vector-icons";
-import PrimaryStackNavigator from "./PrimaryHomeStackNavigator";
 import { MaterialIcons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 import PrimaryTopTabNavigator from "./PrimaryTopTabNavigator";
 import { ThemeContext } from "../../context/ThemeContext";
 import theme from "../../theme/theme";
+import PrimaryDrawerNavigator from "./PrimaryDrawerNavigator";
 const Tab = createBottomTabNavigator();
 
 const PrimaryBottomTabNavigator = () => {
   const { darkmode, setDarkMode } = useContext(ThemeContext);
   return (
     <Tab.Navigator
+    initialRouteName="primarydrawernavigator"
       screenOptions={{
         headerShown: true,
         headerStyle: {
@@ -32,8 +32,8 @@ const PrimaryBottomTabNavigator = () => {
       }}
     >
       <Tab.Screen
-        name="primarystacknavigator"
-        component={PrimaryStackNavigator}
+        name="primarydrawernavigator"
+        component={PrimaryDrawerNavigator}
         options={{
           headerShown: false,
           tabBarLabel: "Home",
@@ -42,7 +42,7 @@ const PrimaryBottomTabNavigator = () => {
             <AntDesign
               name="home"
               size={24}
-              color={focused ? "#FF7D54" : "black"}
+              color={focused ? "#FF7D54" : "grey"}
             />
           ),
         }}
@@ -57,7 +57,7 @@ const PrimaryBottomTabNavigator = () => {
             <MaterialIcons
               name="meeting-room"
               size={24}
-              color={focused ? "#FF7D54" : "black"}
+              color={focused ? "#FF7D54" : "grey"}
             />
           ),
         }}

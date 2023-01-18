@@ -6,6 +6,8 @@ import theme from "../../theme/theme";
 import DrawerIcon from "../../components/DrawerIcon";
 import { ThemeContext } from "../../context/ThemeContext";
 import Avatar from "../../components/Avatar";
+import PrimaryBottomTabNavigator from "./PrimaryBottomTabNavigator";
+import PrimaryHomeStackNavigator from "./PrimaryHomeStackNavigator";
 const Drawer = createDrawerNavigator();
 const PrimaryDrawerNavigator = () => {
   const { darkmode, setDarkMode } = useContext(ThemeContext);
@@ -27,7 +29,7 @@ const PrimaryDrawerNavigator = () => {
         : theme.light.textcolor,
       })}
     >
-      <Drawer.Screen name="primaryhome" component={Home} />
+      <Drawer.Screen name="home" component={Home} />
     </Drawer.Navigator>
   );
 };
