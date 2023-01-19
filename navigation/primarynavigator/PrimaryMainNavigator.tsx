@@ -1,11 +1,10 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
+import PrimaryHomeStackNavigator from './PrimaryHomeStackNavigator';
 
 const PrimaryMainNavigator = () => {
   return (
-    <View>
-      <Text>PrimaryMainNavigator</Text>
-    </View>
+    <PrimaryHomeStackNavigator />
   )
 }
 

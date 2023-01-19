@@ -1,10 +1,9 @@
 import React from "react";
-import PrimaryBottomTabNavigator from "./primarynavigator/PrimaryBottomTabNavigator";
-import PrimaryDrawerNavigator from "./primarynavigator/PrimaryDrawerNavigator";
-import PrimaryHomeStackNavigator from "./primarynavigator/PrimaryHomeStackNavigator";
+import PrimaryMainNavigator from "./primarynavigator/PrimaryMainNavigator";
+import SecondaryHomeStackNavigator from "./secondarynavigator/SecondaryHomeStackNavigator";
 
 const AppStack = () => {
-  return <PrimaryHomeStackNavigator />;
+  return <SecondaryHomeStackNavigator/>
 };
 
 export default AppStack;
