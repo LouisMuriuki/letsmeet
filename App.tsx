@@ -4,13 +4,16 @@ import React from "react";
 import { ThemeContextProvider } from "./context/ThemeContext";
 import Main from "./Main";
 import { PopupContextProvider } from "./context/PopupContext";
+import SearchContextProvider from "./context/SearchContext";
 
 export default function App() {
   return (
     <ThemeContextProvider>
-      <PopupContextProvider>
-        <Main />
-      </PopupContextProvider>
+      <SearchContextProvider>
+        <PopupContextProvider>
+          <Main />
+        </PopupContextProvider>
+      </SearchContextProvider>
     </ThemeContextProvider>
   );
 }

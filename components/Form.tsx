@@ -256,8 +256,6 @@ export default Form;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 20,
-    backgroundColor: "#fff",
   },
   label: {
     fontSize: 16,
@@ -275,6 +273,10 @@ const styles = StyleSheet.create({
   button: {
     backgroundColor: "#0066CC",
     padding: 10,
+    marginHorizontal:40,
+    borderRadius:5,
+    elevation:5,
+
     alignItems: "center",
   },
   buttonText: {

@@ -130,6 +130,7 @@ const Home = ({ navigation }) => {
             <AntDesign
               name="edit"
               size={20}
+              onPress={() => navigation.navigate("newInvitation")}
               style={{ marginRight: 20, padding: 10 }}
               color="black"
             />
@@ -265,7 +266,7 @@ const Home = ({ navigation }) => {
         </View>
       </View>
       <CustomAlert
-        message="Are you sure you want to continue?"
+        message="Are you sure you want to cancel this meeting reservation ?"
         onContinue={() => console.log("Continue clicked")}
         onCancel={() => setCustomAlertVisible(false)}
       />

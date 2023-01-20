@@ -1,20 +1,46 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import React, { useContext } from "react";
+import React, { useContext,useState } from "react";
 import { Ionicons, MaterialIcons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 import { ThemeContext } from "../../context/ThemeContext";
 import theme from "../../theme/theme";
-
+import { TouchableOpacity } from "react-native";
 import SecondaryDrawerNavigator from "./SecondaryDrawerNavigator";
 import SecondaryTopTabNavigator from "./SecondaryTopTabNavigator";
+import { SearchContext } from "../../context/SearchContext";
+import SearchBar from "../../components/Searchbar";
 const Tab = createBottomTabNavigator();
 const SecondaryBottomTabNavigator = () => {
   const { darkmode, setDarkMode } = useContext(ThemeContext);
+  const { searchtext, setSearchText } = useContext(SearchContext);
+  const [searchavailable, setSearchAvailable] = useState(false);
   return (
     <Tab.Navigator
     initialRouteName="secondarydrawernavigator"
       screenOptions={{
         headerShown: true,
+        headerLeft: () =>
+          searchavailable && (
+            <TouchableOpacity
+              style={{ paddingLeft: 10 }}
+              onPress={() => setSearchAvailable(false)}
+            >
+              <Ionicons name="arrow-back" size={24} color="white" />
+            </TouchableOpacity>
+          ),
+        title: searchavailable ? "" : "Meetings",
+        headerRight: () => {
+          return searchavailable ? (
+            <SearchBar width={searchavailable ?"100%":"0%"} setSearchText={setSearchText} searchtext={searchtext} />
+          ) : (
+            <TouchableOpacity
+              style={{ paddingRight: 30 }}
+              onPress={() => setSearchAvailable(true)}
+            >
+              <Ionicons name="ios-search" size={24} color="white" />
+            </TouchableOpacity>
+          );
+        },
         headerStyle: {
           backgroundColor: darkmode
             ? theme.dark.background
