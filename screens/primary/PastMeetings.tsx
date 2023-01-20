@@ -1,6 +1,6 @@
-import { StyleSheet, Text, View,FlatList } from 'react-native'
-import React ,{useContext}from 'react'
-import { ThemeContext } from '../../context/ThemeContext';
+import { StyleSheet, Text, View, FlatList } from "react-native";
+import React, { useContext } from "react";
+import { ThemeContext } from "../../context/ThemeContext";
 import Meeting from "../../Meeting.json";
 import theme from "../../theme/theme";
 
@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
     height: 80,
     borderRadius: 5,
     margin: 3,
-    marginTop:10
+    marginTop: 10,
   },
   itemcontainer: {
     flexDirection: "row",
@@ -101,8 +101,8 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   leftcolor: {
-    borderTopLeftRadius:5,
-    borderBottomLeftRadius:5,
+    borderTopLeftRadius: 5,
+    borderBottomLeftRadius: 5,
     width: 5,
     backgroundColor: "#cf1039",
   },
@@ -123,34 +123,29 @@ const styles = StyleSheet.create({
   centeritem: {
     justifyContent: "center",
     paddingVertical: 10,
-    width:"100%",
+    width: "100%",
     flexDirection: "column",
   },
   date: {
     fontSize: 16,
-    marginBottom:10,
+    marginBottom: 10,
     fontWeight: "bold",
   },
-  time: {
-  
-  },
-  title:{
+  time: {},
+  title: {
     fontSize: 16,
-    marginBottom:10,
+    marginBottom: 10,
     fontWeight: "bold",
   },
-  attendant:{
-
-  },
+  attendant: {},
   rightitem: {
     padding: 10,
     justifyContent: "center",
     alignItems: "center",
     flexDirection: "column",
   },
-  editicon:{
-    marginBottom:10,
+  editicon: {
+    marginBottom: 10,
   },
-  deleteicon:{
-  }
+  deleteicon: {},
 });

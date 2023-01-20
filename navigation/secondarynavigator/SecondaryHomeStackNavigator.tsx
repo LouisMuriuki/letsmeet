@@ -2,6 +2,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React, { useContext } from "react";
 import { ThemeContext } from "../../context/ThemeContext";
 import NewGuest from "../../screens/secondary/NewGuest";
+import QRscanner from "../../screens/secondary/QRscanner";
 import theme from "../../theme/theme";
 import SecondaryBottomTabNavigator from "./SecondaryBottomTabNavigator";
 const Stack = createNativeStackNavigator();
@@ -25,6 +26,8 @@ const SecondaryHomeStackNavigator = () => {
         options={{ headerShown: false }}
         component={SecondaryBottomTabNavigator}
       />
+
+      <Stack.Screen  name="QR-Scanner" component={QRscanner} />
       <Stack.Screen  name="NewGuest" component={NewGuest} />
     </Stack.Navigator>
   );

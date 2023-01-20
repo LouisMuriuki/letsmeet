@@ -1,0 +1,23 @@
+[
+    {
+      "name": "John Smith",
+      "checkInTime": "12:30 PM",
+      "phoneNumber": "555-555-5555",
+      "id":1,
+      "title": "CEO"
+    },
+    {
+      "name": "Jane Doe",
+      "checkInTime": "1:00 PM",
+      "phoneNumber": "555-555-5556",
+      "id":2,
+      "title": "CTO"
+    },
+    {
+      "name": "Bob Johnson",
+      "checkInTime": "2:00 PM",
+      "phoneNumber": "555-555-5557",
+      "id":3,
+      "title": "CFO"
+    }
+  ]
