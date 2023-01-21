@@ -26,7 +26,7 @@ const PrimaryHomeStackNavigator = () => {
         options={{ headerShown: false }}
         component={PrimaryBottomTabNavigator}
       />
-      <Stack.Screen  name="newInvitation" component={NewInvitation} />
+      <Stack.Screen  name="MeetingInvitation" component={NewInvitation} />
     </Stack.Navigator>
   );
 };

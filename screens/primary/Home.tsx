@@ -125,12 +125,15 @@ const Home = ({ navigation }) => {
           {"09 AM - 11 AM"}
         </Text>
         <View style={styles.meetingcontainerbottom}>
-          <View style={styles.meetingcontainerleft}></View>
+          <View style={styles.meetingcontainerleft}>
+            {<Images height={35} width={35} image={woman1} />}
+            <Text style={{fontWeight:"500"}}> Joe Rwanda</Text>
+          </View>
           <View style={styles.meetingcontainerright}>
             <AntDesign
               name="edit"
               size={20}
-              onPress={() => navigation.navigate("newInvitation")}
+              onPress={() => navigation.navigate("MeetingInvitation")}
               style={{ marginRight: 20, padding: 10 }}
               color="black"
             />
@@ -214,7 +217,7 @@ const Home = ({ navigation }) => {
             iconcolor={"#fff"}
             iconsize={20}
             flexDirection="row"
-            onPress={() => navigation.navigate("newInvitation")}
+            onPress={() => navigation.navigate("MeetingInvitation")}
           />
           <View style={{ position: "absolute", right: -75, top: 130 }}>
             <Images height={60} width={60} image={man1} />
@@ -364,6 +367,8 @@ const styles = StyleSheet.create({
   },
   meetingcontainerleft: {
     flex: 2,
+    flexDirection: "row",
+    alignItems: "center",
   },
   meetingcontainerright: {
     flexDirection: "row",

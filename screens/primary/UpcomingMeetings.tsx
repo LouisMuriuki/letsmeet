@@ -1,9 +1,17 @@
-import { StyleSheet, Text, View,FlatList } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  FlatList,
+  TouchableNativeFeedback,
+} from "react-native";
 import React, { useContext } from "react";
 import { ThemeContext } from "../../context/ThemeContext";
 import Meeting from "../../Meeting.json";
 import theme from "../../theme/theme";
 import { AntDesign } from "@expo/vector-icons";
+import { PopupContext } from "../../context/PopupContext";
+import CustomAlert from "../../components/CustomAlert";
 interface Meeting {
   date: string;
   day: string;
@@ -15,9 +23,11 @@ interface Meeting {
 interface Props {
   meetings: Meeting[];
 }
-const UpcomingMeetings = () => {
+const UpcomingMeetings = ({ navigation }) => {
   console.log(Meeting);
   const { darkmode, setDarkMode } = useContext(ThemeContext);
+  const { customealertvisible, setCustomAlertVisible } =
+    useContext(PopupContext);
   const renderItem = ({ item }: { item: Meeting }) => {
     return (
       <View
@@ -47,13 +57,28 @@ const UpcomingMeetings = () => {
           </View>
           <View style={styles.right}>
             <View style={styles.rightitem}>
-            <AntDesign
-              name="edit"
-              size={20}
-              style={styles.editicon}
-              color="black"
-            />
-            <AntDesign name="delete" style={styles.deleteicon} size={18} color="red" />
+              <TouchableNativeFeedback
+                background={TouchableNativeFeedback.Ripple("#FF7D54", false)}
+              >
+                <AntDesign
+                  name="edit"
+                  size={20}
+                  style={styles.editicon}
+                  color="black"
+                  onPress={() => navigation.navigate("MeetingInvitation")}
+                />
+              </TouchableNativeFeedback>
+              <TouchableNativeFeedback
+                background={TouchableNativeFeedback.Ripple("#FF7D54", false)}
+              >
+                <AntDesign
+                  name="delete"
+                  style={styles.deleteicon}
+                  onPress={() => setCustomAlertVisible(true)}
+                  size={18}
+                  color="red"
+                />
+              </TouchableNativeFeedback>
             </View>
           </View>
         </View>
@@ -80,6 +105,11 @@ const UpcomingMeetings = () => {
           paddingBottom: 100,
         }}
       />
+      <CustomAlert
+        message="Are you sure you want to cancel this meeting reservation ?"
+        onContinue={() => console.log("Continue clicked")}
+        onCancel={() => setCustomAlertVisible(false)}
+      />
     </View>
   );
 };
@@ -93,10 +123,10 @@ const styles = StyleSheet.create({
   meetingcontainer: {
     flex: 1,
     flexDirection: "row",
-    height: 80,
+    height: 90,
     borderRadius: 5,
     margin: 3,
-    marginTop:10
+    marginTop: 10,
   },
   itemcontainer: {
     flexDirection: "row",
@@ -115,13 +145,13 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   leftcolor: {
-    borderTopLeftRadius:5,
-    borderBottomLeftRadius:5,
+    borderTopLeftRadius: 5,
+    borderBottomLeftRadius: 5,
     width: 5,
-    backgroundColor: "#cf1039",
+    backgroundColor: "#FF7D54",
   },
   leftitem: {
-    padding: 10,
+    padding: 5,
     justifyContent: "center",
     alignItems: "center",
     flexDirection: "column",
@@ -130,41 +160,35 @@ const styles = StyleSheet.create({
     position: "absolute",
     left: 90,
     height: "100%",
-    paddingVertical: 10,
     width: 1,
     backgroundColor: "#909090",
   },
   centeritem: {
     justifyContent: "center",
-    paddingVertical: 10,
-    width:"100%",
+
+    width: "100%",
     flexDirection: "column",
   },
   date: {
     fontSize: 16,
-    marginBottom:10,
+    marginBottom: 20,
     fontWeight: "bold",
   },
-  time: {
-  
-  },
-  title:{
+  time: {},
+  title: {
     fontSize: 16,
-    marginBottom:10,
+    marginBottom: 20,
     fontWeight: "bold",
   },
-  attendant:{
-
-  },
+  attendant: {},
   rightitem: {
     padding: 10,
     justifyContent: "center",
     alignItems: "center",
     flexDirection: "column",
   },
-  editicon:{
-    marginBottom:10,
+  editicon: {
+    marginBottom: 20,
   },
-  deleteicon:{
-  }
+  deleteicon: {},
 });

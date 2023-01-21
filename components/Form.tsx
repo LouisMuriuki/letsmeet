@@ -26,7 +26,7 @@ const Form = () => {
   return (
     <ScrollView
       style={
-        (styles.container,
+        (styles.scrollcontainer,
         {
           backgroundColor: darkmode
             ? theme.dark.background
@@ -34,228 +34,235 @@ const Form = () => {
         })
       }
     >
-      <Text
-        style={[
-          styles.label,
-          {
-            color: darkmode ? theme.dark.textcolor : theme.light.textcolor,
-          },
-        ]}
-      >
-        Host Name
-      </Text>
-      <TextInput
-        style={[
-          styles.input,
-          {
-            backgroundColor: darkmode
-              ? theme.dark.inputbg
-              : theme.light.inputbg,
-            color: darkmode ? theme.dark.textcolor : theme.light.textcolor,
-          },
-        ]}
-        onChangeText={(text) => setHostName(text)}
-        value={hostName}
-        placeholder="Enter host name"
-        placeholderTextColor={
-          darkmode
-            ? theme.dark.placeholderTextColor
-            : theme.light.placeholderTextColor
-        }
-      />
+      <View style={styles.container}>
+        <Text
+          style={[
+            styles.label,
+            {
+              color: darkmode ? theme.dark.textcolor : theme.light.textcolor,
+            },
+          ]}
+        >
+          Host Name
+        </Text>
+        <TextInput
+          style={[
+            styles.input,
+            {
+              backgroundColor: darkmode
+                ? theme.dark.inputbg
+                : theme.light.inputbg,
+              color: darkmode ? theme.dark.textcolor : theme.light.textcolor,
+            },
+          ]}
+          onChangeText={(text) => setHostName(text)}
+          value={hostName}
+          placeholder="Enter host name"
+          placeholderTextColor={
+            darkmode
+              ? theme.dark.placeholderTextColor
+              : theme.light.placeholderTextColor
+          }
+        />
 
-      <Text
-        style={[
-          styles.label,
-          {
-            color: darkmode ? theme.dark.textcolor : theme.light.textcolor,
-          },
-        ]}
-      >
-        Recipient Email
-      </Text>
-      <TextInput
-        style={[
-          styles.input,
-          {
-            backgroundColor: darkmode
-              ? theme.dark.inputbg
-              : theme.light.inputbg,
-            color: darkmode ? theme.dark.textcolor : theme.light.textcolor,
-          },
-        ]}
-        onChangeText={(text) => setRecipientEmail(text)}
-        value={recipientEmail}
-        placeholder="Enter recipient email"
-        keyboardType="email-address"
-        placeholderTextColor={
-          darkmode
-            ? theme.dark.placeholderTextColor
-            : theme.light.placeholderTextColor
-        }
-      />
+        <Text
+          style={[
+            styles.label,
+            {
+              color: darkmode ? theme.dark.textcolor : theme.light.textcolor,
+            },
+          ]}
+        >
+          Recipient Email
+        </Text>
+        <TextInput
+          style={[
+            styles.input,
+            {
+              backgroundColor: darkmode
+                ? theme.dark.inputbg
+                : theme.light.inputbg,
+              color: darkmode ? theme.dark.textcolor : theme.light.textcolor,
+            },
+          ]}
+          onChangeText={(text) => setRecipientEmail(text)}
+          value={recipientEmail}
+          placeholder="Enter recipient email"
+          keyboardType="email-address"
+          placeholderTextColor={
+            darkmode
+              ? theme.dark.placeholderTextColor
+              : theme.light.placeholderTextColor
+          }
+        />
 
-      <Text
-        style={[
-          styles.label,
-          {
-            color: darkmode ? theme.dark.textcolor : theme.light.textcolor,
-          },
-        ]}
-      >
-        Location
-      </Text>
-      <TextInput
-        style={[
-          styles.input,
-          {
-            backgroundColor: darkmode
-              ? theme.dark.inputbg
-              : theme.light.inputbg,
-            color: darkmode ? theme.dark.textcolor : theme.light.textcolor,
-          },
-        ]}
-        onChangeText={(text) => setLocation(text)}
-        value={location}
-        placeholder="Enter location"
-        placeholderTextColor={
-          darkmode
-            ? theme.dark.placeholderTextColor
-            : theme.light.placeholderTextColor
-        }
-      />
+        <Text
+          style={[
+            styles.label,
+            {
+              color: darkmode ? theme.dark.textcolor : theme.light.textcolor,
+            },
+          ]}
+        >
+          Location
+        </Text>
+        <TextInput
+          style={[
+            styles.input,
+            {
+              backgroundColor: darkmode
+                ? theme.dark.inputbg
+                : theme.light.inputbg,
+              color: darkmode ? theme.dark.textcolor : theme.light.textcolor,
+            },
+          ]}
+          onChangeText={(text) => setLocation(text)}
+          value={location}
+          placeholder="Enter location"
+          placeholderTextColor={
+            darkmode
+              ? theme.dark.placeholderTextColor
+              : theme.light.placeholderTextColor
+          }
+        />
 
-      <Text
-        style={[
-          styles.label,
-          {
-            color: darkmode ? theme.dark.textcolor : theme.light.textcolor,
-          },
-        ]}
-      >
-        Company
-      </Text>
-      <TextInput
-        style={[
-          styles.input,
-          {
-            backgroundColor: darkmode
-              ? theme.dark.inputbg
-              : theme.light.inputbg,
-            color: darkmode ? theme.dark.textcolor : theme.light.textcolor,
-          },
-        ]}
-        onChangeText={(text) => setCompany(text)}
-        value={company}
-        placeholder="Enter company name"
-        placeholderTextColor={
-          darkmode
-            ? theme.dark.placeholderTextColor
-            : theme.light.placeholderTextColor
-        }
-      />
+        <Text
+          style={[
+            styles.label,
+            {
+              color: darkmode ? theme.dark.textcolor : theme.light.textcolor,
+            },
+          ]}
+        >
+          Company
+        </Text>
+        <TextInput
+          style={[
+            styles.input,
+            {
+              backgroundColor: darkmode
+                ? theme.dark.inputbg
+                : theme.light.inputbg,
+              color: darkmode ? theme.dark.textcolor : theme.light.textcolor,
+            },
+          ]}
+          onChangeText={(text) => setCompany(text)}
+          value={company}
+          placeholder="Enter company name"
+          placeholderTextColor={
+            darkmode
+              ? theme.dark.placeholderTextColor
+              : theme.light.placeholderTextColor
+          }
+        />
 
-      <Text
-        style={[
-          styles.label,
-          {
-            color: darkmode ? theme.dark.textcolor : theme.light.textcolor,
-          },
-        ]}
-      >
-        Date
-      </Text>
-      <TextInput
-        style={[
-          styles.input,
-          {
-            backgroundColor: darkmode
-              ? theme.dark.inputbg
-              : theme.light.inputbg,
-            color: darkmode ? theme.dark.textcolor : theme.light.textcolor,
-          },
-        ]}
-        onChangeText={(text) => setDate(text)}
-        value={date}
-        placeholder="Enter date"
-        keyboardType="numeric"
-        placeholderTextColor={
-          darkmode
-            ? theme.dark.placeholderTextColor
-            : theme.light.placeholderTextColor
-        }
-      />
+        <Text
+          style={[
+            styles.label,
+            {
+              color: darkmode ? theme.dark.textcolor : theme.light.textcolor,
+            },
+          ]}
+        >
+          Date
+        </Text>
+        <TextInput
+          style={[
+            styles.input,
+            {
+              backgroundColor: darkmode
+                ? theme.dark.inputbg
+                : theme.light.inputbg,
+              color: darkmode ? theme.dark.textcolor : theme.light.textcolor,
+            },
+          ]}
+          onChangeText={(text) => setDate(text)}
+          value={date}
+          placeholder="Enter date"
+          keyboardType="numeric"
+          placeholderTextColor={
+            darkmode
+              ? theme.dark.placeholderTextColor
+              : theme.light.placeholderTextColor
+          }
+        />
 
-      <Text
-        style={[
-          styles.label,
-          {
-            color: darkmode ? theme.dark.textcolor : theme.light.textcolor,
-          },
-        ]}
-      >
-        Start Time
-      </Text>
-      <TextInput
-        style={[
-          styles.input,
-          {
-            backgroundColor: darkmode
-              ? theme.dark.inputbg
-              : theme.light.inputbg,
-            color: darkmode ? theme.dark.textcolor : theme.light.textcolor,
-          },
-        ]}
-        onChangeText={(text) => setStartTime(text)}
-        value={startTime}
-        placeholder="Enter start time"
-        placeholderTextColor={
-          darkmode
-            ? theme.dark.placeholderTextColor
-            : theme.light.placeholderTextColor
-        }
-      />
+        <Text
+          style={[
+            styles.label,
+            {
+              color: darkmode ? theme.dark.textcolor : theme.light.textcolor,
+            },
+          ]}
+        >
+          Start Time
+        </Text>
+        <TextInput
+          style={[
+            styles.input,
+            {
+              backgroundColor: darkmode
+                ? theme.dark.inputbg
+                : theme.light.inputbg,
+              color: darkmode ? theme.dark.textcolor : theme.light.textcolor,
+            },
+          ]}
+          onChangeText={(text) => setStartTime(text)}
+          value={startTime}
+          placeholder="Enter start time"
+          placeholderTextColor={
+            darkmode
+              ? theme.dark.placeholderTextColor
+              : theme.light.placeholderTextColor
+          }
+        />
 
-      <Text
-        style={[
-          styles.label,
-          {
-            color: darkmode ? theme.dark.textcolor : theme.light.textcolor,
-          },
-        ]}
-      >
-        End Time
-      </Text>
-      <TextInput
-        style={[
-          styles.input,
-          {
-            backgroundColor: darkmode
-              ? theme.dark.inputbg
-              : theme.light.inputbg,
-            color: darkmode ? theme.dark.textcolor : theme.light.textcolor,
-          },
-        ]}
-        onChangeText={(text) => setEndTime(text)}
-        value={endTime}
-        placeholder="Enter end time"
-        placeholderTextColor={
-          darkmode
-            ? theme.dark.placeholderTextColor
-            : theme.light.placeholderTextColor
-        }
-      />
+        <Text
+          style={[
+            styles.label,
+            {
+              color: darkmode ? theme.dark.textcolor : theme.light.textcolor,
+            },
+          ]}
+        >
+          End Time
+        </Text>
+        <TextInput
+          style={[
+            styles.input,
+            {
+              backgroundColor: darkmode
+                ? theme.dark.inputbg
+                : theme.light.inputbg,
+              color: darkmode ? theme.dark.textcolor : theme.light.textcolor,
+            },
+          ]}
+          onChangeText={(text) => setEndTime(text)}
+          value={endTime}
+          placeholder="Enter end time"
+          placeholderTextColor={
+            darkmode
+              ? theme.dark.placeholderTextColor
+              : theme.light.placeholderTextColor
+          }
+        />
 
-      <TouchableOpacity style={styles.button} onPress={handleSubmit}>
-        <Text style={styles.buttonText}>Submit</Text>
-      </TouchableOpacity>
+        <TouchableOpacity style={styles.button} onPress={handleSubmit}>
+          <Text style={styles.buttonText}>Submit</Text>
+        </TouchableOpacity>
+      </View>
     </ScrollView>
   );
 };
 export default Form;
 const styles = StyleSheet.create({
-  container: {
+  scrollcontainer: {
     flex: 1,
+  },
+  container: {
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    paddingBottom: 50,
   },
   label: {
     fontSize: 16,
@@ -273,9 +280,9 @@ const styles = StyleSheet.create({
   button: {
     backgroundColor: "#0066CC",
     padding: 10,
-    marginHorizontal:40,
-    borderRadius:5,
-    elevation:5,
+    marginHorizontal: 40,
+    borderRadius: 5,
+    elevation: 5,
 
     alignItems: "center",
   },

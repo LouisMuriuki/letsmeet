@@ -13,11 +13,9 @@ const PrimaryTopTabNavigator = () => {
     <Tab.Navigator
       initialRouteName="Upcoming"
       screenOptions={{
-        tabBarLabelStyle: { fontSize: 14, fontWeight: "400" },
+        tabBarLabelStyle: { fontSize: 14, fontWeight: "400", },
         tabBarIndicatorStyle: {
-          backgroundColor: darkmode
-            ? theme.dark.textcolor
-            : theme.light.textcolor,
+          backgroundColor: "#FF7D54",
         },
         tabBarActiveTintColor:  darkmode
         ? theme.dark.textcolor

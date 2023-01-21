@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
   meetingcontainer: {
     flex: 1,
     flexDirection: "row",
-    height: 80,
+    height: 90,
     borderRadius: 5,
     margin: 3,
     marginTop:10
@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
     borderTopLeftRadius:5,
     borderBottomLeftRadius:5,
     width: 5,
-    backgroundColor: "#cf1039",
+    backgroundColor: "#FF7D54",
   },
   leftitem: {
     padding: 10,

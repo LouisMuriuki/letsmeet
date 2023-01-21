@@ -3,7 +3,7 @@ import PrimaryMainNavigator from "./primarynavigator/PrimaryMainNavigator";
 import SecondaryHomeStackNavigator from "./secondarynavigator/SecondaryHomeStackNavigator";
 
 const AppStack = () => {
-  return <SecondaryHomeStackNavigator/>
+  return <PrimaryMainNavigator/>
 };
 
 export default AppStack;

@@ -21,8 +21,5 @@ export default NewInvitation
 const styles = StyleSheet.create({
   container:{
     flex:1,
-    paddingVertical:10,
-    paddingHorizontal: 20,
-    paddingBottom:50
   }
 })

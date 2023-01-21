@@ -42,7 +42,13 @@ const CustomAlert = ({ message, onContinue, onCancel }) => {
                 marginBottom: 10,
               }}
             >
-              <MaterialIcons name="clear" size={24} style={{fontWeight:"bold"}} color="red" />
+              <MaterialIcons
+                name="clear"
+                onPress={onCancel}
+                size={24}
+                style={{ fontWeight: "bold" }}
+                color="red"
+              />
             </View>
           </View>
           <Text style={{ fontSize: 15 }}>{message}</Text>

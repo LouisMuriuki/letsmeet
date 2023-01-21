@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 5,
     borderBottomLeftRadius: 5,
     width: 5,
-    backgroundColor: "#cf1039",
+    backgroundColor: "#FF7D54",
   },
   right: {
     flexDirection: "row",

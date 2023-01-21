@@ -12,11 +12,15 @@ import {
 } from "react-native";
 import {
   Entypo,
+  FontAwesome,
+  Ionicons,
   MaterialCommunityIcons,
   MaterialIcons,
 } from "@expo/vector-icons";
+
 import { ThemeContext } from "../context/ThemeContext";
 import theme from "../theme/theme";
+import Images from "./Images";
 const RateUs = async () => {
   if (await StoreReview.isAvailableAsync()) {
     StoreReview.requestReview()
@@ -53,6 +57,7 @@ const ShareApp = async () => {
   }
 };
 const CustomDrawer = () => {
+  const lui = require("../assets/lui.jpg");
   const { darkmode, setDarkMode } = useContext(ThemeContext);
   return (
     <View
@@ -74,10 +79,36 @@ const CustomDrawer = () => {
             backgroundColor: "#FF7D54",
           }}
         >
-          <Image
-            source={require("../assets/drawericon.png")}
-            style={{ width: "100%", height: 270 }}
-          />
+          <View
+            style={{ position: "absolute", left: 0, padding: 10, bottom: 0 }}
+          >
+            <Image
+              style={{ height: 120, width: 120, borderRadius: 60 }}
+              source={lui}
+            />
+            <Text
+              style={{
+                marginVertical: 5,
+                marginHorizontal:5,
+                fontSize: 18,
+                fontWeight: "600",
+                color: "white",
+              }}
+            >
+              Louis Muriuki
+            </Text>
+            <Text
+              style={{
+                marginVertical: 5,
+                marginHorizontal:5,
+                fontSize: 16,
+                fontWeight: "500",
+                color: "white",
+              }}
+            >
+              C.E.O
+            </Text>
+          </View>
         </View>
       </View>
       <TouchableNativeFeedback
@@ -145,8 +176,11 @@ const CustomDrawer = () => {
           </Text>
         </View>
       </TouchableNativeFeedback>
-      <View style={styles.bottom}>
-        <View style={styles.draweritembottom}>
+      <TouchableNativeFeedback
+        background={TouchableNativeFeedback.Ripple("#FF7D54", false)}
+      >
+        <View style={styles.draweritem} onTouchStart={ShareApp}>
+          <FontAwesome name="sign-out" size={28} color="#FF7D54" />
           <Text
             style={[
               styles.drawertext,
@@ -155,9 +189,29 @@ const CustomDrawer = () => {
               },
             ]}
           >
-            Dark Mode
+            SignOut
+          </Text>
+        </View>
+      </TouchableNativeFeedback>
+      <View style={styles.bottom}>
+        <View style={styles.draweritembottom}>
+          {darkmode ? (
+            <Entypo name="light-up" size={28} color="#FF7D54" />
+          ) : (
+            <Ionicons name="moon" size={28} color="black" />
+          )}
+          <Text
+            style={[
+              styles.drawertext,
+              {
+                color: darkmode ? theme.dark.textcolor : theme.light.textcolor,
+              },
+            ]}
+          >
+            {darkmode ? "Light Mode" : "Dark Mode"}
           </Text>
           <Switch
+          style={{marginLeft:20}}
             value={darkmode}
             onValueChange={(value) => {
               setDarkMode(value);
@@ -194,5 +248,7 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     paddingLeft: 20,
     height: 45,
+    backgroundColor:"#3434",
+    width:"auto"
   },
 });

@@ -10,11 +10,16 @@ const Images = ({ image, width, height }) => {
       style={[
         styles.avatarcontainer,
         {
-          borderColor: darkmode ? theme.dark.textcolor : theme.light.textcolor,
+          borderColor: darkmode
+            ? theme.dark.imagebordercolor
+            : theme.light.imagebordercolor,
+          width:width+4,
+          height:height+4,
+          borderRadius: 50,
         },
       ]}
     >
-      <Image style={[styles.tinyLogo,{height,width}]} source={image} />
+      <Image style={[styles.tinyLogo, { height, width }]} source={image} />
     </View>
   );
 };
