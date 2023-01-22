@@ -16,7 +16,7 @@ const PrimaryDrawerNavigator = () => {
       drawerContent={(props: any) => <CustomDrawer {...props} />}
       screenOptions={({ navigation }) => ({
         // headerLeft: () => <DrawerIcon navigation={navigation}  />,
-        headerRight: () => <Avatar  />,
+        headerRight: () => <Avatar onPress={()=>navigation.toggleDrawer} />,
         headerShadowVisible: false,
         title: "",
         headerStyle: {

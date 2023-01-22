@@ -132,14 +132,14 @@ const Home = ({ navigation }) => {
           <View style={styles.meetingcontainerright}>
             <AntDesign
               name="edit"
-              size={20}
+              size={22}
               onPress={() => navigation.navigate("MeetingInvitation")}
               style={{ marginRight: 20, padding: 10 }}
               color="black"
             />
             <AntDesign
               name="delete"
-              size={20}
+              size={22}
               onPress={() => setCustomAlertVisible(true)}
               color="red"
             />

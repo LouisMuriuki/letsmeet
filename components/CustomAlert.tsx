@@ -3,7 +3,13 @@ import { View, Text, TouchableOpacity } from "react-native";
 import Modal from "react-native-modal";
 import { PopupContext } from "../context/PopupContext";
 import { MaterialIcons } from "@expo/vector-icons";
-const CustomAlert = ({ message, onContinue, onCancel }) => {
+
+interface Props{
+  message:string,
+  onContinue:()=>void,
+  onCancel:()=>void
+}
+const CustomAlert = ({ message, onContinue, onCancel }:Props) => {
   const { customealertvisible, setCustomAlertVisible } =
     useContext(PopupContext);
 

@@ -3,7 +3,11 @@ import React, { useContext } from "react";
 import theme from "../theme/theme";
 import { ThemeContext } from "../context/ThemeContext";
 import Images from "./Images";
-const Avatar = () => {
+
+interface Props {
+onPress?:() => void
+}
+const Avatar = ({onPress}:Props) => {
   const { darkmode, setDarkMode } = useContext(ThemeContext);
   const lui=require("../assets/lui.jpg")
   return (

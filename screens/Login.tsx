@@ -4,6 +4,7 @@ import {
   Text,
   TextInput,
   View,
+  Dimensions,
   ActivityIndicator,
 } from "react-native";
 import React, { useContext, useState } from "react";
@@ -15,12 +16,12 @@ const Login = () => {
     const woman1 = require("../assets/woman1.jpg");
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-
+  const windowWidth = Dimensions.get('window').width;
   return (
     <KeyboardAwareScrollView style={{ backgroundColor: "#ffffff" }}>
       <View style={styles.container}>
         <View style={styles.top}>
-          <Images width={"100%"} height={300} image={woman1} />
+          <Images width={windowWidth} height={300} image={woman1} />
         </View>
 
         <View style={styles.logintext}>

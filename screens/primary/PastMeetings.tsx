@@ -115,8 +115,8 @@ const styles = StyleSheet.create({
   verticleLine: {
     position: "absolute",
     left: 90,
-    height: "100%",
-    paddingVertical: 10,
+    height: "90%",
+    marginTop:5,
     width: 1,
     backgroundColor: "#909090",
   },

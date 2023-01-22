@@ -71,7 +71,7 @@ const CustomDrawer = () => {
       <View style={{ marginBottom: 20 }}>
         <View
           style={{
-            height: 300,
+            height: 200,
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
@@ -80,10 +80,10 @@ const CustomDrawer = () => {
           }}
         >
           <View
-            style={{ position: "absolute", left: 0, padding: 10, bottom: 0 }}
+            style={{ position: "absolute", left: 0, padding: 10, bottom: 0,paddingLeft:20 }}
           >
             <Image
-              style={{ height: 120, width: 120, borderRadius: 60 }}
+              style={{ height: 80, width: 80, borderRadius: 40 }}
               source={lui}
             />
             <Text
@@ -122,7 +122,7 @@ const CustomDrawer = () => {
             )
           }
         >
-          <MaterialIcons name="star-rate" size={28} color="#FF7D54" />
+          <MaterialIcons name="star-rate" size={24} color="#FF7D54" />
           <Text
             style={[
               styles.drawertext,
@@ -146,7 +146,7 @@ const CustomDrawer = () => {
             )
           }
         >
-          <MaterialIcons name="privacy-tip" size={28} color="#FF7D54" />
+          <MaterialIcons name="privacy-tip" size={24} color="#FF7D54" />
           <Text
             style={[
               styles.drawertext,
@@ -163,7 +163,7 @@ const CustomDrawer = () => {
         background={TouchableNativeFeedback.Ripple("#FF7D54", false)}
       >
         <View style={styles.draweritem} onTouchStart={ShareApp}>
-          <Entypo name="share" size={28} color="#FF7D54" />
+          <Entypo name="share" size={24} color="#FF7D54" />
           <Text
             style={[
               styles.drawertext,
@@ -180,7 +180,7 @@ const CustomDrawer = () => {
         background={TouchableNativeFeedback.Ripple("#FF7D54", false)}
       >
         <View style={styles.draweritem} onTouchStart={ShareApp}>
-          <FontAwesome name="sign-out" size={28} color="#FF7D54" />
+          <FontAwesome name="sign-out" size={24} color="#FF7D54" />
           <Text
             style={[
               styles.drawertext,
@@ -189,16 +189,16 @@ const CustomDrawer = () => {
               },
             ]}
           >
-            SignOut
+            Sign-Out
           </Text>
         </View>
       </TouchableNativeFeedback>
       <View style={styles.bottom}>
         <View style={styles.draweritembottom}>
           {darkmode ? (
-            <Entypo name="light-up" size={28} color="#FF7D54" />
+            <Entypo name="light-up" size={24} color="#FF7D54" />
           ) : (
-            <Ionicons name="moon" size={28} color="black" />
+            <Ionicons name="moon" size={24} color="black" />
           )}
           <Text
             style={[
@@ -248,7 +248,6 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     paddingLeft: 20,
     height: 45,
-    backgroundColor:"#3434",
     width:"auto"
   },
 });

@@ -10,7 +10,7 @@ const Main = () => {
   return (
     <NavigationContainer>
       <StatusBar style={darkmode ? "light" : "dark"} />
-      <AppStack />
+      <Login/>
     </NavigationContainer>
     // <>
     //   <StatusBar style={darkmode ? "light" : "dark"} />
