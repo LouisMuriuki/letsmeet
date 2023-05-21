@@ -1,7 +1,7 @@
 # letsmeet
 Send meeting invitations and view your meetings using this app build in react native
 
-![Annotation 2023-04-17 231404](https://github.com/LouisMuriuki/letsmeet/assets/42152260/feffb466-df77-4df6-bf70-a3284079b678)
+![Annotation 2023-04-17 231404](https://github.com/LouisMuriuki/letsmeet/assets/42152260/feffb466-df77-4df6-bf70-a3284079b678)![Annotation 2023-04-17 231715](https://github.com/LouisMuriuki/letsmeet/assets/42152260/2fde0679-4f53-429c-ad43-b4cb463a127c)
 
 ## Run Project
 1. Clone this repository
